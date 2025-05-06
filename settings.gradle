@@ -1,0 +1,3 @@
+rootProject.name = 'ModularEcommerce'
+
+include 'common', 'product', 'order', 'user', 'api'
