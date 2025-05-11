@@ -8,6 +8,11 @@ dependencies {
     implementation project(':order')
     implementation project(':user')
 
+    testImplementation project(':common')
+    testImplementation project(':product')
+    testImplementation project(':order')
+    testImplementation project(':user')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.modulith:spring-modulith-starter-core'
@@ -16,4 +21,19 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // spring modulith docs
+    testImplementation "org.springframework.modulith:spring-modulith-docs:1.4.0-SNAPSHOT"
 }
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+}
+
+test {
+    doFirst {
+        println "Test Classpath: " + classpath.asPath
+    }
+}
+

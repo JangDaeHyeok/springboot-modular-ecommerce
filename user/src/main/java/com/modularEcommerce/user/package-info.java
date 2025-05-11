@@ -1,2 +1,4 @@
-@org.springframework.modulith.ApplicationModule
+@ApplicationModule(allowedDependencies = {"common"})
 package com.modularEcommerce.user;
+
+import org.springframework.modulith.ApplicationModule;

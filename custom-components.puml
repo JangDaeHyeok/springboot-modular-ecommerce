@@ -1,0 +1,23 @@
+@startuml(id=modularEcommerceContainers)
+!include <C4/C4_Container>
+
+Person(user, "User")
+
+System_Boundary(ecommerceSystem, "Modular Ecommerce System") {
+    Container(api, "API", "Spring Boot", "Application Runner")
+    Container(userModule, "User Module", "Spring Modulith", "User domain & logic")
+    Container(product, "Product Module", "Spring Modulith", "Product domain & logic")
+    Container(order, "Order Module", "Spring Modulith", "Order domain & logic")
+    Container(common, "Common Module", "Spring Modulith", "Shared exceptions & value objects")
+}
+
+Rel(api, userModule, "calls")
+Rel(api, product, "calls")
+Rel(api, order, "calls")
+Rel(order, product, "uses")
+Rel(userModule, common, "uses")
+Rel(product, common, "uses")
+Rel(order, common, "uses")
+
+SHOW_LEGEND()
+@enduml
