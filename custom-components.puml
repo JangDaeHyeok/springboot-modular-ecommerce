@@ -4,17 +4,21 @@
 Person(user, "User")
 
 System_Boundary(ecommerceSystem, "Modular Ecommerce System") {
-    Container(api, "API", "Spring Boot", "Application Runner")
+    Container(api, "API", "Spring Boot", "Application Entry Point")
     Container(userModule, "User Module", "Spring Modulith", "User domain & logic")
-    Container(product, "Product Module", "Spring Modulith", "Product domain & logic")
-    Container(order, "Order Module", "Spring Modulith", "Order domain & logic")
-    Container(common, "Common Module", "Spring Modulith", "Shared exceptions & value objects")
+    Container(product, "Product Module", "Spring Modulith", "Handles product logic & event listeners")
+    Container(order, "Order Module", "Spring Modulith", "Handles order logic & publishes events")
+    Container(common, "Common Module", "Spring Modulith (OPEN)", "Shared DTOs, Events (e.g., ProductUsedEvent)")
 }
 
-Rel(api, userModule, "calls")
-Rel(api, product, "calls")
-Rel(api, order, "calls")
-Rel(order, product, "uses")
+Rel(user, api, "uses", "HTTP")
+Rel(api, userModule, "invokes")
+Rel(api, product, "invokes")
+Rel(api, order, "invokes")
+
+Rel(order, common, "publishes ProductUsedEvent")
+Rel(product, common, "listens to ProductUsedEvent")
+
 Rel(userModule, common, "uses")
 Rel(product, common, "uses")
 Rel(order, common, "uses")
