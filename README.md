@@ -18,6 +18,8 @@ modular-ecommerce/
 
 ## 🧩 Modules Overview
 
+![Module Diagram](custom-components.png)
+
 | Module   | Description                    |
 |----------|--------------------------------|
 | common   | 공통 예외, validation, 유틸 클래스 |
