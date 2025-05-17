@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class OrderService {
 
-    // 모듈에서 모듈 참조하면 docs 연관관계 출력됨
     private final ApplicationEventPublisher publisher;
 
     private final OrderRepository orderRepository;

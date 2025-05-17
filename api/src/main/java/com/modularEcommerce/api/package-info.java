@@ -2,4 +2,3 @@
 package com.modularEcommerce.api;
 
 import org.springframework.modulith.ApplicationModule;
-import org.springframework.modulith.NamedInterface;
